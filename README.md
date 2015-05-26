@@ -36,6 +36,7 @@ cache.get("someKey", 5000, myAsyncFunction, arg1, arg2, argN, cb);
 That's it. If "someKey" already exists in the cache, it'll be returned to the callback immediately and `myAsyncFunction` will not be executed. If it's not in the cache, `myAsyncFunction` will be executed with the listed arguments and the result will be passed to `cb`. If that call was successful (meaning that it didn't pass an error to `cb` as its first argument), then the result will be cached for the specified number of milliseconds (5000 in this example).
 
 **Note:** Make sure to pass a callback (`cb`), even if it's just an empty function.
+
 **Note:** There can be from zero to as many arguments as needed.
 
 That's it. It solves a very simple problem elegantly. Does one thing and does it well.
