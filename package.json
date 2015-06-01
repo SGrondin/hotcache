@@ -1,6 +1,6 @@
 {
   "name": "hotcache",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Smart async cache",
   "main": "lib/index.js",
   "scripts": {
