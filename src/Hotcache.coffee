@@ -1,8 +1,8 @@
 # https://github.com/Mashape/HARchiver/blob/01b590cee12d50ed2349e426f291d73b4ee11698/src/cache.ml
 makeExpire = (cache, key, exp) ->
-	setTimeout () ->
-		if cache[key]?.waiting.length == 0 then delete cache[key]
-	, exp
+	(setTimeout () ->
+			if cache[key]?.waiting.length == 0 then delete cache[key]
+		, exp).unref?()
 
 makeItem = (cache, key, exp, element=null) ->
 	{
