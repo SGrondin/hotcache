@@ -11,7 +11,7 @@ echo 'Compiling hotcache...'
 node_modules/coffee-script/bin/coffee -c src/*.coffee
 rm lib/*.js
 mv src/*.js lib/
-node_modules/browserify/bin/cmd.js lib/index.js > hotcache.js
+node_modules/browserify/bin/cmd.js -u bluebird lib/index.js > hotcache.js
 node_modules/uglify-js/bin/uglifyjs hotcache.js -o hotcache.min.js
 
 echo 'Done!'

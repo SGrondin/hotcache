@@ -68,7 +68,51 @@ setTimeout(function() {
 	})
 }, 250)
 
+/****** PROMISES *****/
+// No-wrap
+cache.pget("def", 1000, (function(a){
+	assert(a === "z")
+	return 6
+}), "z")
+.then(function(res){
+	assert(res === 6)
+})
+.catch(function(err){
+	throw err
+})
+
+// Wrap
+cache.pget("ghi", 1000, (function(a){
+	assert(a === "z")
+	return Promise.resolve(6)
+}), "z")
+.then(function(res){
+	assert(res === 6)
+})
+.catch(function(err){
+	throw err
+})
+
+// Shouldn't get called
+cache.pget("ghi", 1000, (function(a){
+	throw new Error("Shouldn't be called")
+}))
+
+// Should catch the error
+cache.pget("jkl", 1000, (function(a){
+	nothing.nothing() // Throws an error
+	return Promise.resolve(6)
+}), "z")
+.then(function(res){
+	throw new Error("Shouldn't continue the chain")
+})
+.catch(function(err){
+	assert(err.message === "nothing is not defined")
+})
+
+
+
 setTimeout(function() {
-	oldAssert(nbChecks === 17)
-	console.log("Success", nbChecks, "/17 tests")
+	oldAssert(nbChecks === 22)
+	console.log("Success", nbChecks, "/22 tests")
 }, 2500)
