@@ -1,10 +1,10 @@
 {
   "name": "hotcache",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Smart async cache",
   "main": "lib/index.js",
   "scripts": {
-    "test": "node test/index.js",
+    "test": "./node_modules/mocha/bin/mocha test/index.js",
     "make": "./scripts/recompile.sh"
   },
   "repository": {
@@ -27,6 +27,7 @@
   "devDependencies":{
     "coffee-script": "1.10.x",
     "browserify": "*",
-    "uglify-js": "*"
+    "uglify-js": "*",
+    "mocha": "*"
   }
 }
